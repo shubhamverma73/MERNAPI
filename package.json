@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/controllers/index.js",
-    "dev": "nodemon src/controllers/index.js"
+    "start": "node src/controllers/student.js",
+    "dev": "nodemon src/controllers/student.js"
   },
   "keywords": [],
   "author": "Shubham",
