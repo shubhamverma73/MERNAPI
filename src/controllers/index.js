@@ -1,11 +1,11 @@
 //npm run dev
 const express   = require('express');
-const Students  = require('./models/students');
+const Students  = require('./../models/students');
 const app       = express();
 const port      = process.env.PORT || 3000;
-require('./db/conn');
-require('./models/students');
-const commonhelper = require('./helper/commonhelper');
+require('./../db/conn');
+require('./../models/students');
+const commonhelper = require('./../helper/commonhelper');
 
 app.use(express.json());
 // ================================ Create a new students ===============================
