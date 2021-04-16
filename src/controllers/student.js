@@ -7,7 +7,9 @@ require('./../db/conn');
 require('./../models/students');
 const commonhelper = require('./../helper/commonhelper');
 
+// =================================== Convert JSON to Object ===========================================
 app.use(express.json());
+
 // ================================ Create a new students (Using Promise) ===============================
 /*app.post('/students', (req, res) => {
     const user = new Students(req.body);
@@ -47,7 +49,7 @@ app.get('/student', async (req, res) => {
 app.get('/student/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const result = await Students.findById({_id: id});
+        const result = await Students.findById({_id: id}); //If you want to get by Phone or Email, use find instead of findById and replace _id with phone or email
         commonhelper.handleData(req, res, result);
     }
     catch(err) {
@@ -56,24 +58,24 @@ app.get('/student/:id', async (req, res) => {
 });
 
 // ================================ Update data of specific user ===============================
-/*app.patch('/student/:id', async (req, res) => {
+app.patch('/student/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const result = await Students.findByIdAndUpdate(id, req.body, {
-            new: true
+        const result = await Students.findByIdAndUpdate({_id: id}, req.body, { //If you want to update by Phone or Email, use update instead of findByIdAndUpdate and replace _id with phone or email
+            new: true //Return newly data to result variable
         });
         commonhelper.handleSuccess(req, res, 'Record updated successfully.');
     }
     catch(err) {
-        commonhelper.handleError(err, res, 'Records not found, try again.');
+        commonhelper.handleError(err, res, 'Record not found, try again.');
     }
-});*/
+});
 
 // ================================ Delete data of specific user ===============================
 app.delete('/student/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const result = await Students.findByIdAndDelete({_id: id});
+        const result = await Students.findByIdAndDelete({_id: id}); //If you want to delete by Phone or Email, use delete instead of findByIdAndDelete and replace _id with phone or email
         commonhelper.handleSuccess(req, res, 'Record deleted successfully.');
     }
     catch(err) {
